@@ -150,8 +150,8 @@ export const PollDisplay = ({ poll, onVote, onShowResults }: PollDisplayProps) =
               className={`relative border rounded-lg p-4 transition-all 
                 ${hasVoted ? "cursor-default" : "cursor-pointer hover:border-secondary"}
                 ${selectedOptions.includes(option.id) ? 
-                  "border-secondary bg-secondary/5 ring-2 ring-secondary/20" : 
-                  "border-gray-200"}
+                  "border-secondary bg-secondary/60 ring-5 ring-secondary/120" : 
+                  "border-gray-300"}
               `}
               onClick={() => handleOptionSelect(option.id)}
             >

@@ -11,7 +11,7 @@ const Index = () => {
       <main className="container max-w-4xl mx-auto py-6 md:py-12 space-y-8 md:space-y-12 flex-grow px-4 md:px-6">
         <div className="text-center space-y-4 md:space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Create a Poll
+          Polarize Your Audience!
           </h1>
           <p className="text-sm text-muted-foreground max-w-md mx-auto">
             Complete the below fields to create your poll.
