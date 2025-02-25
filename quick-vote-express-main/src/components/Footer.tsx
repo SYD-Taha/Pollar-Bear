@@ -52,7 +52,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-100 py-4">
-      <div className="container max-w-5xl mx-auto flex items-center justify-between px-6">
+      <div className="w-full flex items-center justify-between px-6">
         
         {/* Email Section (Far Left) */}
         <div className="text-[14px] text-muted-foreground">
