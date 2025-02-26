@@ -1,12 +1,12 @@
 
 import { Poll } from "@/types/poll";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
-export const TrendingPolls = () => {
+export const ExplorePolls = () => {
   const [trendingPolls, setTrendingPolls] = useState<Poll[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -28,8 +28,8 @@ export const TrendingPolls = () => {
             settings
           `)
           .eq('is_archived', false)
-          .order('total_votes', { ascending: false })
-          .limit(3);
+          .order('total_votes', { ascending: false });
+          
 
         if (error) throw error;
 
@@ -76,11 +76,10 @@ export const TrendingPolls = () => {
     return (
       <div className="animate-fade-in">
         <div className="flex items-center gap-2 mb-6">
-          <TrendingUp className="h-5 w-5 text-accent" />
-          <h2 className="text-xl font-semibold">Trending Polls</h2>
+          <h2 className="text-xl font-semibold">Fetching Polls</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {[...Array(3)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <div key={i} className="p-4 border rounded-lg animate-pulse">
               <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
               <div className="h-4 bg-gray-200 rounded w-1/2"></div>
@@ -95,8 +94,7 @@ export const TrendingPolls = () => {
     return (
       <div className="animate-fade-in">
         <div className="flex items-center gap-2 mb-6">
-          <TrendingUp className="h-5 w-5 text-accent" />
-          <h2 className="text-xl font-semibold">Trending Polls</h2>
+          <h2 className="text-xl font-semibold">Fetching Polls</h2>
         </div>
         <div className="text-center p-4 text-red-500">{error}</div>
       </div>
@@ -104,17 +102,19 @@ export const TrendingPolls = () => {
   }
 
   return (
-    <div className="animate-fade-in">
-      <div className="flex items-center gap-2 mb-6">
-        <TrendingUp className="h-5 w-5 text-accent" />
-        <h2 className="text-xl font-semibold">Trending Polls</h2>
+    <div className="h-screen bg-[#F1F0FB] text-gray-800 flex flex-col flex-1 p-10 overflow-hidden">
+      <div className="flex items-center justify-center gap-2 mb-6"> 
+        <h1 className="text-center text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Explore Other Polls
+        </h1>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {trendingPolls.map((poll) => (
           <div
             key={poll.id}
-            className="p-4 border rounded-lg hover:border-secondary transition-colors"
+            className="p-4 border bg-white rounded-lg hover:border-secondary transition-colors"
           >
             <h3 className="font-medium mb-2 line-clamp-2">{poll.question}</h3>
             <div className="flex justify-between items-center text-sm text-gray-500">

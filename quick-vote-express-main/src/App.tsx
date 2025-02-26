@@ -9,6 +9,7 @@ import Poll from "./pages/Poll";
 import NotFound from "./pages/NotFound";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
+import { ExplorePolls } from "./pages/ExplorePolls";
 
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
       <Header/>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/explorePolls" element={<ExplorePolls/>} />
           <Route path="/poll/:id" element={<Poll />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

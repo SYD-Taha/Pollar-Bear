@@ -27,7 +27,7 @@ const Poll = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-hidden">
       <main className="container py-8">
         <PollDisplay 
           poll={poll} 

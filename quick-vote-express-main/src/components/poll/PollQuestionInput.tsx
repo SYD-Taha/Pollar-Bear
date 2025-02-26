@@ -25,7 +25,7 @@ export const PollQuestionInput = ({ question, setQuestion }: PollQuestionInputPr
         className="mt-2 text-sm text-[#9b87f5] hover:text-[#7E69AB] flex items-center gap-2"
       >
         <ImagePlus className="h-4 w-4" />
-        Add description or image
+        Add description or image (Coming soon...)
       </button>
     </div>
   );
