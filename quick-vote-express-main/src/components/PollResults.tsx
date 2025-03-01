@@ -41,9 +41,15 @@ export const PollResults = ({ poll, onBack }: PollResultsProps) => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, percent }) => 
-                  isMobile ? `${(percent * 100).toFixed(0)}%` : `${name} (${(percent * 100).toFixed(0)}%)`
-                }
+                // label={({ name, percent }) => 
+                //   isMobile ? `${(percent * 100).toFixed(0)}%` : `${name} (${(percent * 100).toFixed(0)}%)`
+                // }
+                label={({ name, percent, x, y }) => (
+                  <text x={x} y={y} fill="black" textAnchor="middle" dominantBaseline="central">
+                    {isMobile ? `${(percent * 100).toFixed(0)}%` : `${name} (${(percent * 100).toFixed(0)}%)`}
+                  </text>
+                )}
+                
                 outerRadius={isMobile ? 100 : 150}
                 fill="#8884d8"
                 dataKey="value"

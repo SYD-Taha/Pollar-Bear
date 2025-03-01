@@ -53,43 +53,91 @@ export const ExplorePolls = () => {
     loadTrendingPolls();
   }, [showAvailable, showAllVotes]);
 
-  return (
-    <div className="h-screen bg-[#F1F0FB] text-gray-800 flex flex-col flex-1 p-10 overflow-hidden">
-      <div className="flex items-center justify-between mb-6"> 
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Explore Other Polls
-        </h1>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span>Currently Available</span>
-            <Switch checked={showAvailable} onCheckedChange={setShowAvailable} />
-          </div>
-          <div className="flex items-center gap-2">
-            <span>All Votes</span>
-            <Switch checked={showAllVotes} onCheckedChange={setShowAllVotes} />
-          </div>
+//   return (
+//     <div className="h-screen bg-[#F1F0FB] text-gray-800 flex flex-col flex-1 p-10 overflow-hidden">
+//       <div className="flex items-center justify-between mb-6"> 
+//         <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+//           Explore Other Polls
+//         </h1>
+//         <div className="flex items-center gap-4">
+//           <div className="flex items-center gap-2">
+//             <span>Currently Available</span>
+//             <Switch checked={showAvailable} onCheckedChange={setShowAvailable} />
+//           </div>
+//           <div className="flex items-center gap-2">
+//             <span>All Votes</span>
+//             <Switch checked={showAllVotes} onCheckedChange={setShowAllVotes} />
+//           </div>
+//         </div>
+//       </div>
+      
+//       {isLoading && <p className="text-center">Fetching Polls...</p>}
+//       {error && <p className="text-red-500 text-center">{error}</p>}
+
+//       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+//         {trendingPolls.map((poll) => (
+//           <div key={poll.id} className="p-4 border bg-white rounded-lg hover:border-secondary transition-colors">
+//             <h3 className="font-medium mb-2 line-clamp-2">{poll.question}</h3>
+//             <div className="flex justify-between items-center text-sm text-gray-500">
+//               <span>{poll.totalVotes} votes</span>
+//               <Link to={`/poll/${poll.id}`}>
+//                 <Button variant="ghost" size="sm">
+//                   Vote
+//                   <ArrowRight className="h-4 w-4 ml-2" />
+//                 </Button>
+//               </Link>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+
+return (
+  <div className="min-h-screen bg-[#F1F0FB] text-gray-800 flex flex-col flex-1 p-10 overflow-auto">
+    {/* Header Section */}
+    <div className="flex flex-wrap md:flex-nowrap items-center justify-between mb-6 space-y-4 md:space-y-0"> 
+      {/* Heading - Stays in One Line */}
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        Explore Other Polls
+      </h1>
+
+      {/* Options - Move to Next Line on Small Screens */}
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <span>Currently Available</span>
+          <Switch checked={showAvailable} onCheckedChange={setShowAvailable} />
+        </div>
+        <div className="flex items-center gap-2">
+          <span>All Votes</span>
+          <Switch checked={showAllVotes} onCheckedChange={setShowAllVotes} />
         </div>
       </div>
-      
-      {isLoading && <p className="text-center">Fetching Polls...</p>}
-      {error && <p className="text-red-500 text-center">{error}</p>}
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-        {trendingPolls.map((poll) => (
-          <div key={poll.id} className="p-4 border bg-white rounded-lg hover:border-secondary transition-colors">
-            <h3 className="font-medium mb-2 line-clamp-2">{poll.question}</h3>
-            <div className="flex justify-between items-center text-sm text-gray-500">
-              <span>{poll.totalVotes} votes</span>
-              <Link to={`/poll/${poll.id}`}>
-                <Button variant="ghost" size="sm">
-                  Vote
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
-  );
+    
+    {/* Loading & Error Messages */}
+    {isLoading && <p className="text-center">Fetching Polls...</p>}
+    {error && <p className="text-red-500 text-center">{error}</p>}
+
+    {/* Polls Grid */}
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+      {trendingPolls.map((poll) => (
+        <div key={poll.id} className="p-4 border bg-white rounded-lg hover:border-secondary transition-colors">
+          <h3 className="font-medium mb-2 line-clamp-2">{poll.question}</h3>
+          <div className="flex justify-between items-center text-sm text-gray-500">
+            <span>{poll.totalVotes} votes</span>
+            <Link to={`/poll/${poll.id}`}>
+              <Button variant="ghost" size="sm">
+                Vote
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 };
