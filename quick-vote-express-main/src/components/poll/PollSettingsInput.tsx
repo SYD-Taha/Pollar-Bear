@@ -98,7 +98,7 @@ export const PollSettingsInput = ({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="ip">One vote per IP address</SelectItem>
-                  <SelectItem value="session">One vote per browser session</SelectItem>
+                  <SelectItem value="session">One vote per browser session (Coming Soon...)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
